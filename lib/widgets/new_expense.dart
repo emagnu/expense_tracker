@@ -20,6 +20,17 @@ class _NewExpenseState extends State<NewExpense> {
   // String _enteredTitle = '';
   // void _saveTitleImput(String inputValue) {_enteredTitle = inputValue;}
 
+  void _presentDatePicker() {
+    final now = DateTime.now();
+    final firstDate = DateTime(now.year - 1, now.month, now.day);
+    showDatePicker(
+      context: context,
+      initialDate: now,
+      firstDate: firstDate,
+      lastDate: now,
+    );
+  }
+
   @override
   void dispose() {
     _titleController.dispose();
@@ -41,12 +52,34 @@ class _NewExpenseState extends State<NewExpense> {
             maxLength: 50,
             decoration: const InputDecoration(label: Text('Title')),
           ),
-          TextField(
-            keyboardType: TextInputType.number,
-            controller: _amountController,
-            maxLength: 50,
-            decoration:
-                const InputDecoration(label: Text('Amount'), prefixText: '£ '),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: TextField(
+                  keyboardType: TextInputType.number,
+                  controller: _amountController,
+                  maxLength: 50,
+                  decoration: const InputDecoration(
+                      label: Text('Amount'), prefixText: '£ '),
+                ),
+              ),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    const Text('Selected Date  '),
+                    IconButton(
+                      icon: const Icon(Icons.calendar_month),
+                      onPressed: () {
+                        _presentDatePicker;
+                      },
+                    )
+                  ],
+                ),
+              ),
+            ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -66,7 +99,7 @@ class _NewExpenseState extends State<NewExpense> {
                 child: const Text('Reset'),
               ),
             ],
-          )
+          ),
         ],
       ),
     );
