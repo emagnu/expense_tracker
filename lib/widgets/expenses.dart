@@ -67,10 +67,17 @@ class _ExpensesState extends State<Expenses> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Expenses'),
+        backgroundColor: Colors.grey,
+        actions: <Widget>[
+          IconButton(onPressed: () {}, icon: const Icon(Icons.add))
+        ],
+        // title: const Text('Expenses'),
+        title: const Text('Expenses Tracker'),
       ),
       body: Column(
         children: <Widget>[
+          //  Toolbar with the Ass button => Row() -> in the appBar
+
           const Text('The Chart'),
           // Text('Expenses List ....'),
           // Expanded(child: ExpensesList(expenses: _registeredExpenses)),
