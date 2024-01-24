@@ -2,9 +2,8 @@
 //  Import LIBRARIES
 import 'package:flutter/material.dart';
 //  Import FILES
-import 'data/registered_expenses.dart';
-import 'models/expense.dart';
-import 'widgets/expenses_list.dart';
+import '../data/registered_expenses.dart';
+import 'expenses_list/expenses_list.dart';
 //  PARTS
 //  PROVIDERS
 
