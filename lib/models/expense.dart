@@ -1,11 +1,17 @@
 //   //
 //  Import LIBRARIES
+import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
+import 'package:intl/intl.dart';
+
 //  Import FILES
 //  PARTS
 //  PROVIDERS
 
 ///
+
+final formatter = DateFormat.yMd();
+
 const uuid = Uuid();
 
 enum Category {
@@ -14,6 +20,13 @@ enum Category {
   leisure,
   work,
 }
+
+const categoryIcons = {
+  Category.food: Icons.lunch_dining,
+  Category.travel: Icons.flight_takeoff,
+  Category.leisure: Icons.movie,
+  Category.work: Icons.work,
+};
 
 class Expense {
   final String id;
@@ -28,4 +41,9 @@ class Expense {
     required this.date,
     required this.category,
   }) : id = uuid.v4();
+
+  // getFormatteeDate
+  String get formattedDate {
+    return formatter.format(date);
+  }
 }
