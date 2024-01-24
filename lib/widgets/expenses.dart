@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 //  Import FILES
 import '../data/registered_expenses.dart';
 import 'expenses_list/expenses_list.dart';
+import 'new_expense.dart';
 //  PARTS
 //  PROVIDERS
 
@@ -63,13 +64,22 @@ class _ExpensesState extends State<Expenses> {
 //     ),
 //   ];
 
+  void _openAddExpenseOverlay() {
+    showModalBottomSheet(
+      context: context,
+      // builder: (ctx) => const Text('Modal bottom sheet'),
+      builder: (ctx) => const NewExpense(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey,
         actions: <Widget>[
-          IconButton(onPressed: () {}, icon: const Icon(Icons.add))
+          IconButton(
+              onPressed: _openAddExpenseOverlay, icon: const Icon(Icons.add))
         ],
         // title: const Text('Expenses'),
         title: const Text('Expenses Tracker'),
